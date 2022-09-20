@@ -1,62 +1,52 @@
+let pScore = 0;
+let cScore = 0
+
 function getComputerChoice() {
-    let randomNum = Math.floor(Math.random() * 3);
-        return randomNum
-
+    const randomNum = Math.floor(Math.random() * 3)
+        if(randomNum === 0) {
+            return 'rock'
+        } else if (randomNum === 1)  {
+            return 'paper'
+        } else {
+            return 'scissor'
+        }
 }
-let compPick = () => {
-switch (getComputerChoice()) {
-    case 0:
-        return 'rock'
-        break;
-    case 1:
-        return 'paper'
-        break;
-    case 2:
-        return 'scissor'
-        break;
-       
-}
-}
- let playerScore = 0
- let compScore = 0
+console.log(getComputerChoice())
 
-
-function playRound(playerSelection, computerSelection) {
-   
-   let playerScore = 0;
-    let compScore = 0;
-   
-    if (playerSelection === computerSelection) {
+function playRound(playerSelection,computerSelection) {
+    if(playerSelection === computerSelection) {
         return 'Its a Tie!'
     } else if (playerSelection === 'rock' && computerSelection === 'scissor') {
-        return 'I win ' + playerScore + 1
-        
+        pScore++
+        return "You Win! Rock beats Scissor"
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        return 'I win ' + playerScore + 1
+        pScore++
+        return "You Win! Paper beats Rock"
     } else if (playerSelection === 'scissor' && computerSelection === 'paper') {
-        return 'I win ' + playerScore + 1
+        pScore++
+        return "You Win! Scissor beats Paper"
     } else if (playerSelection === 'rock' && computerSelection === 'paper') {
-        return 'You win ' + compScore + 1
+        cScore++
+        return "You Lost! Paper beats Rock"
     } else if (playerSelection === 'paper' && computerSelection === 'scissor') {
-        return 'You win ' + compScore +1
+        cScore++
+        return "You Lost! Scissor beats Rock"
     } else if (playerSelection === 'scissor' && computerSelection === 'rock') {
-        return 'You win ' + compScore + 1
+        cScore ++
+        return "You Lost! Rock beats Scissor"
     }
-    console.log(playerScore)
-    console.log(compScore)
 }
 
+function game() {
+    
+        const playerSelection = prompt("Rock, Paper, Scissor").toLowerCase()
+        const computerSelection = getComputerChoice()
+     return   playRound(playerSelection,computerSelection)
+    
+}
 
-const computerSelection = compPick()
-let playerSelection =window.prompt("Let's play RPS")
-
-
-//function game() {
-  
-  // return playRound(playerSelection,computerSelection)
-        //for(let i = 0; i < playRound.length; i++){
-           //console.log(playRound(i))
-        
-
-console.log(playRound(playerSelection, computerSelection))
- 
+for (let i=0; i < 5; i++){
+console.log(game())
+console.log(pScore)
+console.log(cScore)
+}
