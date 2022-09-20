@@ -1,6 +1,7 @@
 let pScore = 0;
 let cScore = 0
 
+
 function getComputerChoice() {
     const randomNum = Math.floor(Math.random() * 3)
         if(randomNum === 0) {
@@ -44,9 +45,11 @@ function game() {
      return   playRound(playerSelection,computerSelection)
     
 }
-
+let player = "Player Score = ";
+let computer = "Computer Score = "
 for (let i=0; i < 5; i++){
 console.log(game())
-console.log(pScore)
-console.log(cScore)
+console.log( `${player}` + pScore)
+console.log( `${computer}` + cScore)
+
 }
